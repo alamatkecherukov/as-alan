@@ -1,0 +1,143 @@
+:root{
+    --1: #2E2910;
+    --2: #2C5745;
+    --3: #EBE3A7;
+    --4: #EB7D00;
+    --5: #edecec;
+}
+@font-face {
+    font-family: zag;
+    src: url(fonts/PlayfairDisplaySC-Regular.ttf);
+}
+@font-face {
+    font-family: os;
+    src: url(fonts/Golos-Text_Medium.ttf);
+}
+*{
+    font-family: os;
+}
+h1{
+    font-family: zag;
+}
+h2{
+    font-family: zag;
+}
+a{
+    text-decoration: none;
+}
+
+main{
+    padding: 1% 5%;
+}
+.sl {
+    border: var(--5) 1px solid;
+    padding: 5%
+}
+.hero{
+    background: var(--2);
+    color: var(--5);
+    padding: 4%;
+    text-align: center;
+    margin-bottom: px;
+}
+.hero a {
+    color: var(--5);
+    background: var(--4);
+    padding: 1%;
+    border-radius: 10px;
+    
+}
+.ons{
+    background: var(--3);
+    color: var(--1);
+    padding: 2% 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+.uu{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--);
+    justify-content: center;
+    align-items: center;
+    padding: ;
+    gap: 5px;
+    color: var(--5);
+}
+.uu p {
+    background: var(--2);
+    max-width: 100px;
+    padding: 50% 1%;
+    text-align: center;
+    max-height: 10px !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: var(--1) 2px solid;
+}
+.kaf {
+    padding: 2% 4%;
+    margin-bottom: 15px;
+    color: var(--1);
+}
+.kaf a{
+    color: var(--5);
+    background: var(--2);
+    padding: 1% 2%;
+    border-radius: 10px;
+}
+.gos {
+    background: var(--2);
+    padding: 1% 4% 3% 4%; 
+    color: var(--5);
+
+}
+.gos a{
+    color: var(--5);
+    background: var(--4);
+    padding: 1% 2%;
+    border-radius: 10px;
+}
+.poch {
+    background: var(--3);
+    padding: 2% 4%;
+    color: var(--1);
+}
+.cont {
+    display: flex;
+    /*flex-direction: column;*/
+    gap: 10px;
+    border: var(--1) 1px solid;
+    padding: 2% 4%;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.cont a{
+    background: var(--1);
+    color: var(--5);
+    padding: 1% 2%;
+    border-radius: 15px;
+    max-height: 20px;
+}
+.podv {
+    background: var(--1);
+    padding: 3% 5%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+}
+.s1{
+    display: flex;
+    flex-direction: column;
+}
+.s1 a {
+    color: var(--5);
+}
