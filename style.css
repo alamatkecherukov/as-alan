@@ -36,7 +36,7 @@ main{
 .hero{
     background: var(--2);
     color: var(--5);
-    padding: 4%;
+    padding: 10% 10%;
     text-align: center;
     margin-bottom: px;
 }
@@ -48,7 +48,7 @@ main{
     
 }
 .ons{
-    background: var(--3);
+    background: var(--);
     color: var(--1);
     padding: 2% 4%;
     display: flex;
@@ -67,7 +67,32 @@ main{
     gap: 5px;
     color: var(--5);
 }
-.uu p {
+.ic img{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    width: 80%;
+    height: auto;
+    border-radius: 15px;
+    border: var(--1) px ;
+}
+.ic{
+    background-color: var(--5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 0%;
+    border-radius: 15px;
+    border: var(--1) px solid;
+
+}
+.ic p{
+    background: var(--1);
+    padding: 1% 10%;
+    
+}
+/* {
     background: var(--2);
     max-width: 100px;
     padding: 50% 1%;
@@ -79,7 +104,7 @@ main{
     align-items: center;
     border-radius: 15px;
     border: var(--1) 2px solid;
-}
+}*/
 .kaf {
     padding: 2% 4%;
     margin-bottom: 15px;
@@ -130,14 +155,160 @@ main{
     background: var(--1);
     padding: 3% 5%;
     display: flex;
-    align-items: start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-top: 10px;
+    color: var(--3);
+    
+    
 }
+.podv h2 {
+    text-align: center !important;
+    color: var(--3);
+}
+
 .s1{
+    font-size: 70%;
+    padding: 2%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    width: 10%;
+    height: 60%;
     display: flex;
     flex-direction: column;
+    border: var(--3) 1px solid;
+    min-width: 60px;
 }
 .s1 a {
+    font-family: zag;
+    color: var(--3);
+    text-decoration: ;
+    padding: 1%;
+    
+}
+.ya-r{
+    width: 1000%;
+    max-width: 400px;       /* ограничение по ширине */
+    height: 120px;          /* нужная высота — подгони под виджет */
+    margin: 0 auto;
+}
+.ya-r iframe {
+  width: 1000%;
+  height: 1000%;
+  border: 0;
+  display: block;
+}
+a:hover{
+    color: var(--2);
+}
+.stb{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /*border: var(--3) 1px solid;*/
+}
+.pht img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    width: 30% ;
+    height: auto;
+    border-radius: 15px;
+}
+.pht {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+.pht1 {
+    text-align: center;
+
+}
+.pht1 h2{
+    background: var(--1);
+    color:var(--3);
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+@media (max-width: 600px) {
+main{
+    padding: 1%;
+}
+.hero{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.uu{
+    grid-template-columns: 1fr;
+}
+.pht {
+    flex-direction: column;
+}
+.pht img{
+    width: 90%;
+}
+.cont {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+}
+header {
+  background: var(--4);
+  max-width: 400px;
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 1% 3%;
+  text-align: center;
+  z-index: 1000;
+}
+header a {
     color: var(--5);
+}
+*{
+    scroll-behavior: smooth;
+    scroll-margin-top: 200px;
+}
+.aaa{
+    display: flex;
+    gap: 10px;
+
+
+}
+.carto img{
+    width: 50%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    
+}
+.carto{
+    background: var(--5);
+    width: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    padding: ;
 }

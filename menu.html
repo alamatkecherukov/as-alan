@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Меню — Кафе Ас-Алан</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #EFE6BC;
+    --cream-soft: #F7F1D8;
+    --dark: #2E2910;
+    --emerald: #1F4A47;
+    --emerald-soft: #2E6B66;
+    --orange: #F28C00;
+    --orange-dark: #D97A00;
+    --muted: #5C5540;
+    --border: #DDD2A8;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ ШАПКА ============ */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(239, 230, 188, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--emerald);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .logo span { color: var(--orange); }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav a:hover {
+    background: var(--emerald);
+    color: var(--cream);
+  }
+
+  /* ============ ОСНОВНОЙ БЛОК ============ */
+  .menu {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  .menu__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    color: var(--emerald);
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .menu__subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 56px;
+  }
+
+  /* ============ КАТЕГОРИЯ ============ */
+  .category {
+    margin-bottom: 48px;
+    scroll-margin-top: 90px;
+  }
+
+  .category__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 700;
+    color: var(--emerald);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--orange);
+    margin-bottom: 20px;
+  }
+
+  /* ============ БЛЮДО ============ */
+  .dish {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .dish:last-child { border-bottom: none; }
+
+  .dish__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .dish__name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--dark);
+    line-height: 1.35;
+  }
+
+  .dish__price {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--orange);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .dish__desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* Подкатегория */
+  .subcat {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--emerald-soft);
+    margin: 18px 0 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ============ АДАПТИВ ============ */
+  @media (max-width: 600px) {
+    .menu { padding: 32px 16px 60px; }
+    .menu__subtitle { margin-bottom: 32px; font-size: 13px; }
+    .category { margin-bottom: 32px; }
+    .dish { padding: 12px 0; }
+    .dish__name,
+    .dish__price { font-size: 15px; }
+    .dish__desc { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="#" class="logo">Ас-Алан<span>.</span></a>
+    <nav class="nav">
+      <a href="#salads">Салаты</a>
+      <a href="#breakfast">Завтраки</a>
+      <a href="#first">Первые</a>
+      <a href="#second">Вторые</a>
+      <a href="#garnish">Гарниры</a>
+      <a href="#cuts">Нарезки</a>
+      <a href="#sauces">Соусы</a>
+      <a href="#pasta">Паста</a>
+      <a href="#soba">Соба</a>
+      <a href="#hychiny">Хычыны</a>
+      <a href="#pizza">Пицца</a>
+      <a href="#mangal">Мангал</a>
+      <a href="#cold-drinks">Напитки</a>
+      <a href="#cocktails">Коктейли</a>
+      <a href="#desserts">Десерты</a>
+      <a href="#coffee">Кофе</a>
+      <a href="#tea">Чай</a>
+    </nav>
+  </div>
+</header>
+
+<main class="menu">
+
+  <h1 class="menu__title">Меню</h1>
+  <p class="menu__subtitle">Кафе Ас-Алан</p>
+
+  <!-- ============ САЛАТЫ ============ -->
+  <section class="category" id="salads">
+    <h2 class="category__title">Салаты</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Салат Ас-Алан</span>
+        <span class="dish__price">700 ₽</span>
+      </div>
+      <p class="dish__desc">лист салата, помидор, говядина, омлет, св. огурцы, соевый соус, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Тёплый салат</span>
+        <span class="dish__price">680 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, руккола, помидоры, картофель, болгарский перец, грецкий орех, соус, кунжут</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Восточный бриз</span>
+        <span class="dish__price">680 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, грибы, болгарский перец, руккола, помидоры, грецкий орех, бальз. соус</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">ПП-салат</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">сёмга, авокадо, огурцы, руккола, лимон, соевый соус, оливковое масло</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Крабовый</span>
+        <span class="dish__price">550 ₽</span>
+      </div>
+      <p class="dish__desc">крабовые палочки, яйца, свежий огурец, кукуруза, рис, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Оливье</span>
+        <span class="dish__price">550 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, яйца, зелёный горошек, огурцы, картофель, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Нежный</span>
+        <span class="dish__price">580 ₽</span>
+      </div>
+      <p class="dish__desc">язык, огурцы, грибы, зелёный горошек, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Свежий</span>
+        <span class="dish__price">350 ₽</span>
+      </div>
+      <p class="dish__desc">помидоры, огурцы, лук</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мужской каприз</span>
+        <span class="dish__price">600 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, яйца, огурец, сыр, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Дамский каприз</span>
+        <span class="dish__price">600 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, кукуруза, фасоль, зелёный лук, морковь по-корейски, перец болгарский, масло подсолнечное</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Салат с баклажанами</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">руккола, помидоры, баклажан, соус песто, соус чили</p>
+    </div>
+
+    <h3 class="subcat">Цезарь</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Цезарь с курицей</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">курица, лист салата, помидор, пармезан, соус, сухари</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Цезарь с языком</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">язык, лист салата, помидор, пармезан, соус, сухари</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Цезарь с креветками</span>
+        <span class="dish__price">700 ₽</span>
+      </div>
+      <p class="dish__desc">креветки, лист салата, помидор, пармезан, соус, сухари</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Цезарь с сёмгой</span>
+        <span class="dish__price">700 ₽</span>
+      </div>
+      <p class="dish__desc">сёмга, лист салата, помидор, пармезан, соус, сухари</p>
+    </div>
+
+    <h3 class="subcat">Другие</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Греческий</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">помидор, огурец, болгарский перец, сыр «Фетакса», маслины, оливковое масло, лимон, соевый соус</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Коктейльный</span>
+        <span class="dish__price">620 ₽</span>
+      </div>
+      <p class="dish__desc">курица, огурец, яйцо, орехи, чернослив, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Ассорти</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">язык, ананас, болгарский перец, сыр, майонез, гранат</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Экзотика</span>
+        <span class="dish__price">620 ₽</span>
+      </div>
+      <p class="dish__desc">курица, ананас, орехи, чернослив, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Твой каприз</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">курица, грибы, свежие огурцы, орехи, чернослив, майонез</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Салат с моцареллой</span>
+        <span class="dish__price">680 ₽</span>
+      </div>
+      <p class="dish__desc">руккола, помидор черри, болг. перец, авокадо, лайм, гранат, кунжут, олив. масло</p>
+    </div>
+  </section>
+
+  <!-- ============ ЗАВТРАКИ ============ -->
+  <section class="category" id="breakfast">
+    <h2 class="category__title">Завтраки</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Яичница из трёх яиц</span>
+        <span class="dish__price">350 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Яичница по-турецки</span>
+        <span class="dish__price">400 ₽</span>
+      </div>
+      <p class="dish__desc">два яйца, болг. перец, помидор, лук</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Омлет с креветками</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">салат из рукколы и помидор черри</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Омлет с сыром</span>
+        <span class="dish__price">430 ₽</span>
+      </div>
+      <p class="dish__desc">салат из рукколы с огурцами</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Овсяная каша на молоке</span>
+        <span class="dish__price">250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Овсяная каша с вишней и орехами</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Овсяная каша с кусочками манго и орехами</span>
+        <span class="dish__price">400 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Брускеты с креветками</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+      <p class="dish__desc">тост, пюре из авокадо, креветки, руккола</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Брускеты с яичницей</span>
+        <span class="dish__price">280 ₽</span>
+      </div>
+      <p class="dish__desc">тост, пюре из авокадо, яичница</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Брускеты с авокадо</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+      <p class="dish__desc">тост, творожный сыр, помидор черри, авокадо, руккола</p>
+    </div>
+  </section>
+
+  <!-- ============ ПЕРВЫЕ БЛЮДА ============ -->
+  <section class="category" id="first">
+    <h2 class="category__title">Первые блюда</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Бульон</span>
+        <span class="dish__price">200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шорпа с мясом</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">бульон, мясо</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Лагман</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Окрошка</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Хашлама</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+      <p class="dish__desc">мясо, картофель, помидор, болг. перец, лук</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Куриный суп-лапша</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Крем-суп из шампиньонов</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">грибы, картофель, лук, сыр</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Морковный крем-суп</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">морковь, картофель, лук</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чечевичный крем-суп</span>
+        <span class="dish__price">480 ₽</span>
+      </div>
+      <p class="dish__desc">чечевица, картофель, лук</p>
+    </div>
+  </section>
+
+  <!-- ============ ВТОРЫЕ БЛЮДА ============ -->
+  <section class="category" id="second">
+    <h2 class="category__title">Вторые блюда</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Котлета по-турецки</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Курица на гриле в сливочном соусе</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо по-турецки с рисом</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо с овощами по-арабски</span>
+        <span class="dish__price">600 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо по-горски</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Курица отбивная</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Курица с грибами</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо по-грузински</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо с овощами</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Курица с овощами</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Креветки с овощами</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясо с грибами</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Медальоны</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+    </div>
+
+    <h3 class="subcat">Жаркое</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Жаркое по-домашнему</span>
+        <span class="dish__price">600 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Жаркое с сердцем</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Жаркое с грибами</span>
+        <span class="dish__price">700 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Манты</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Вареники с творогом</span>
+        <span class="dish__price">420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пельмени</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Къыйма</span>
+        <span class="dish__price">1000 г / 580 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Сушёное мясо</span>
+        <span class="dish__price">1000 г / 580 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Форель</span>
+        <span class="dish__price">1000 г / 420 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Фаршированный баклажан</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+      <p class="dish__desc">баклажан, помидор, сыр, лук</p>
+    </div>
+  </section>
+
+  <!-- ============ ГАРНИРЫ ============ -->
+  <section class="category" id="garnish">
+    <h2 class="category__title">Гарниры</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пюре картофельное</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Картофель фри</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Картофель по-деревенски</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Булгур</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Гречка</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Рис</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Рис с овощами</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ НАРЕЗКИ ============ -->
+  <section class="category" id="cuts">
+    <h2 class="category__title">Нарезки</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Овощная</span>
+        <span class="dish__price">100 г / 200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Сырная</span>
+        <span class="dish__price">100 г / 200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясная</span>
+        <span class="dish__price">100 г / 250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соленья</span>
+        <span class="dish__price">100 г / 250 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ СОУСЫ ============ -->
+  <section class="category" id="sauces">
+    <h2 class="category__title">Соусы</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соус красный</span>
+        <span class="dish__price">80 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соус сырный</span>
+        <span class="dish__price">80 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Тузлук</span>
+        <span class="dish__price">80 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Сметана</span>
+        <span class="dish__price">120 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соус сметанный</span>
+        <span class="dish__price">150 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Аджика домашняя</span>
+        <span class="dish__price">200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Гранатовый соус</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Ореховый соус</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПАСТА ============ -->
+  <section class="category" id="pasta">
+    <h2 class="category__title">Паста</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Паста с курицей</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">паста, курица, сливочный соус, пармезан</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Паста с курицей и грибами</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+      <p class="dish__desc">паста, курица, грибы, сливочный соус, пармезан</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Паста с креветками</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+      <p class="dish__desc">паста, креветки, сливочный соус, пармезан</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Паста песто с курицей</span>
+        <span class="dish__price">480 ₽</span>
+      </div>
+      <p class="dish__desc">паста, курица, соус песто, сливочный соус</p>
+    </div>
+  </section>
+
+  <!-- ============ СОБА ============ -->
+  <section class="category" id="soba">
+    <h2 class="category__title">Соба</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соба с курицей</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">450 г · куриное филе, перец болгарский, морковь, лапша соба, соус, черри, кунжут</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соба с говядиной</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+      <p class="dish__desc">450 г · говядина, перец болгарский, морковь, лапша соба, соус, черри, кунжут</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Соба с креветками</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+      <p class="dish__desc">520 г · креветки, перец болгарский, морковь, лапша соба, соус черри, кунжут</p>
+    </div>
+  </section>
+
+  <!-- ============ ХЫЧЫНЫ ============ -->
+  <section class="category" id="hychiny">
+    <h2 class="category__title">Хычыны</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С мясом — большой</span>
+        <span class="dish__price">700 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С мясом — средний</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С мясом — малый</span>
+        <span class="dish__price">320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С картофелем и сыром — большой</span>
+        <span class="dish__price">500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С картофелем и сыром — средний</span>
+        <span class="dish__price">400 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С картофелем и сыром — малый</span>
+        <span class="dish__price">280 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С зеленью — большой</span>
+        <span class="dish__price">550 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С зеленью — средний</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С зеленью — малый</span>
+        <span class="dish__price">320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С сыром и зелёным луком — большой</span>
+        <span class="dish__price">550 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С сыром и зелёным луком — средний</span>
+        <span class="dish__price">450 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С сыром и зелёным луком — малый</span>
+        <span class="dish__price">320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясной с помидорами</span>
+        <span class="dish__price">480 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мясной с б. перцем</span>
+        <span class="dish__price">480 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С курицей</span>
+        <span class="dish__price">480 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Балкарский</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">С картошкой</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Хлеб</span>
+        <span class="dish__price">20 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПИЦЦА ============ -->
+  <section class="category" id="pizza">
+    <h2 class="category__title">Пицца</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца Ас-Алан</span>
+        <span class="dish__price">680 ₽</span>
+      </div>
+      <p class="dish__desc">грибы, курица, помидоры, соус, сыр</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца Цезарь</span>
+        <span class="dish__price">680 ₽</span>
+      </div>
+      <p class="dish__desc">курица, помидоры, лист салата, соус Цезарь, сухари, пармезан</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца Маргарита</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">помидоры, соус, сыр</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца Ассорти</span>
+        <span class="dish__price">650 ₽</span>
+      </div>
+      <p class="dish__desc">соус, сыр, кукуруза, перец болгарский, маслины</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца с креветками</span>
+        <span class="dish__price">750 ₽</span>
+      </div>
+      <p class="dish__desc">соус, сыр, помидоры, руккола</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца с курицей и грибами</span>
+        <span class="dish__price">720 ₽</span>
+      </div>
+      <p class="dish__desc">соус, сыр, руккола, курица, грибы</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца с сёмгой</span>
+        <span class="dish__price">750 ₽</span>
+      </div>
+      <p class="dish__desc">соус, сыр, сёмга, руккола</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца Пеперони</span>
+        <span class="dish__price">750 ₽</span>
+      </div>
+      <p class="dish__desc">томатный соус, сыр, колбаса</p>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Пицца сырная</span>
+        <span class="dish__price">520 ₽</span>
+      </div>
+      <p class="dish__desc">соус, сыр</p>
+    </div>
+  </section>
+
+  <!-- ============ МАНГАЛ ============ -->
+  <section class="category" id="mangal">
+    <h2 class="category__title">Мангал</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шашлык из баранины</span>
+        <span class="dish__price">100 г / 320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шашлык из курицы</span>
+        <span class="dish__price">100 г / 300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шашлык из печени</span>
+        <span class="dish__price">100 г / 300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Люля-кебаб</span>
+        <span class="dish__price">350 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Стейк из сёмги</span>
+        <span class="dish__price">100 г / 500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Стейк из сёмги с овощами</span>
+        <span class="dish__price">100 г / 580 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Стейк с картофелем по-деревенски</span>
+        <span class="dish__price">1500 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Стейк с овощами и картофелем по-деревенски</span>
+        <span class="dish__price">1600 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Картофель с курдюком</span>
+        <span class="dish__price">250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шампиньоны</span>
+        <span class="dish__price">100 г / 220 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Овощи на мангале</span>
+        <span class="dish__price">100 г / 170 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Форель</span>
+        <span class="dish__price">100 г / 380 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ХОЛОДНЫЕ НАПИТКИ ============ -->
+  <section class="category" id="cold-drinks">
+    <h2 class="category__title">Холодные напитки</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Теберда (газированная)</span>
+        <span class="dish__price">0,5 л / 100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Минеральная вода без газа</span>
+        <span class="dish__price">0,5 л / 80 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Лимонад груша</span>
+        <span class="dish__price">0,5 л / 100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Лимонад мохито</span>
+        <span class="dish__price">1 л / 400 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Лимонад цитрусовый</span>
+        <span class="dish__price">1 л / 400 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Лимонад гранатовый</span>
+        <span class="dish__price">1 л / 400 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кола</span>
+        <span class="dish__price">1 л / 200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кола в стекле</span>
+        <span class="dish__price">120 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Сок «Добрый»</span>
+        <span class="dish__price">1 л / 250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Компот</span>
+        <span class="dish__price">1 л / 300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Компот (стакан)</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Айран</span>
+        <span class="dish__price">1 л / 320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Айран</span>
+        <span class="dish__price">0,25 л / 100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Суусаб на нарзане</span>
+        <span class="dish__price">1 л / 320 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Суусаб на воде</span>
+        <span class="dish__price">1 л / 300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Суусаб на нарзане</span>
+        <span class="dish__price">0,5 л / 160 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КОКТЕЙЛИ ============ -->
+  <section class="category" id="cocktails">
+    <h2 class="category__title">Коктейли</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Молочный</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шоколадный</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Клубничный</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Ванильный</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Банановый</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Маракуйя</span>
+        <span class="dish__price">330 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ДЕСЕРТЫ ============ -->
+  <section class="category" id="desserts">
+    <h2 class="category__title">Десерты</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Венская вафля</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Шоколадный фондан</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Панкейки с шоколадом</span>
+        <span class="dish__price">280 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Панкейки с ягодами</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Блины</span>
+        <span class="dish__price">200 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Блины со сгущёнкой</span>
+        <span class="dish__price">220 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Блины с мороженым</span>
+        <span class="dish__price">250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Блины с вареньем</span>
+        <span class="dish__price">250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Блины с мёдом</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мини-пончики</span>
+        <span class="dish__price">380 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мороженое</span>
+        <span class="dish__price">250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мёд</span>
+        <span class="dish__price">100 г / 250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Мёд с орехами</span>
+        <span class="dish__price">100 г / 280 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Варенье домашнее</span>
+        <span class="dish__price">100 г / 150 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Варенье клубничное</span>
+        <span class="dish__price">100 г / 150 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КОФЕ ============ -->
+  <section class="category" id="coffee">
+    <h2 class="category__title">Кофе</h2>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кофе натуральный</span>
+        <span class="dish__price">90 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кофе натуральный двойной</span>
+        <span class="dish__price">180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кофе растворимый</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Кофе гляссе</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Капучино</span>
+        <span class="dish__price">280 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Раф</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Айс-латте</span>
+        <span class="dish__price">300 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Американо</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Эспрессо</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ЧАЙ И ГОРЯЧИЕ НАПИТКИ ============ -->
+  <section class="category" id="tea">
+    <h2 class="category__title">Чай и горячие напитки</h2>
+
+    <h3 class="subcat">Чёрный чай</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай чёрный</span>
+        <span class="dish__price">0,5 л / 120 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай чёрный</span>
+        <span class="dish__price">1 л / 150 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай чёрный</span>
+        <span class="dish__price">1,2 л / 180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай чёрный</span>
+        <span class="dish__price">1,8 л / 250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай чёрный (чашка)</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай с лимоном</span>
+        <span class="dish__price">120 ₽</span>
+      </div>
+    </div>
+
+    <h3 class="subcat">Зелёный чай</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай зелёный</span>
+        <span class="dish__price">0,5 л / 120 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай зелёный</span>
+        <span class="dish__price">1 л / 150 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай зелёный</span>
+        <span class="dish__price">1,2 л / 180 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай зелёный</span>
+        <span class="dish__price">1,8 л / 250 ₽</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай зелёный (чашка)</span>
+        <span class="dish__price">100 ₽</span>
+      </div>
+    </div>
+
+    <h3 class="subcat">Травяной и авторский чай</h3>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай травяной</span>
+        <span class="dish__price">0,5 л</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай травяной</span>
+        <span class="dish__price">1 л</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай травяной</span>
+        <span class="dish__price">1,2 л</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай травяной</span>
+        <span class="dish__price">1,8 л</span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай облепиховый</span>
+        <span class="dish__price"></span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай имбирный</span>
+        <span class="dish__price"></span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай нахальный фрукт</span>
+        <span class="dish__price"></span>
+      </div>
+    </div>
+
+    <div class="dish">
+      <div class="dish__head">
+        <span class="dish__name">Чай калмыцкий</span>
+        <span class="dish__price"></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
